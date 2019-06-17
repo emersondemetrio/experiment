@@ -8,7 +8,8 @@ class HelloMessage extends React.Component {
 		return <div>
 			<Header />
 			<div className="container">
-				<h1>Hello {this.props.name}</h1>
+				<h2>Experiment</h2>
+				<h1>{this.props.question}</h1>
 			</div>
 		</div>
 	}
@@ -16,4 +17,4 @@ class HelloMessage extends React.Component {
 
 let App = document.getElementById("app");
 
-ReactDOM.render(<HelloMessage name="Experiment" />, App);
+ReactDOM.render(<HelloMessage question="What really matters to you?" />, App);
