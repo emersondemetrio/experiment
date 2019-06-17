@@ -1,0 +1,29 @@
+{
+	"name": "experiment",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"dev": "parcel index.html",
+		"build": "parcel build index.html"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/emersondemetrio/experiment.git"
+	},
+	"author": "Emerson Demetrio",
+	"license": "ISC",
+	"homepage": "https://github.com/emersondemetrio/experiment#readme",
+	"devDependencies": {
+		"babel-core": "^6.26.3",
+		"babel-preset-env": "^1.7.0",
+		"babel-preset-react": "^6.24.1",
+		"parcel-bundler": "^1.12.3"
+	},
+	"dependencies": {
+		"node-sass": "^4.12.0",
+		"popper.js": "^1.15.0",
+		"react": "^16.8.6",
+		"react-dom": "^16.8.6"
+	}
+}
