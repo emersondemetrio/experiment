@@ -1,7 +1,6 @@
 all: start-local
 
-start-local:
-	@echo "Local"
+dev:
 	npm run dev
 
 install:
@@ -10,5 +9,5 @@ install:
 build:
 	npm run build
 
-deploy:
+heroky-deploy:
 	git push heroku develop:master
