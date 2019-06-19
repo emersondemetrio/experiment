@@ -12,15 +12,26 @@ class Form extends React.Component {
 		}
 	}
 
-	addAnswer = () => {
-		this.setState(({
+	addAnswer = (event = null) => {
+		const newAnswer = this.state.preAnswer;
+
+		let canProceed = event === null;
+		if (event !== null) {
+			if (event.key === 'Enter') {
+				event.preventDefault();
+				event.stopPropagation();
+				canProceed = newAnswer.length > 1;
+			}
+		}
+
+		canProceed && this.setState(({
 			canSend: true,
 			preAnswer: '',
 			answers: [
 				...this.state.answers,
 				{
 					id: uuidv4(),
-					name: this.state.preAnswer
+					name: newAnswer
 				}
 			]
 		}), () => console.log(this.state, this.state.answers));
@@ -49,28 +60,43 @@ class Form extends React.Component {
 
 	render() {
 		return (
-			<div>
-				<input
-					value={this.state.preAnswer}
-					onChange={e => this.preAdd(e.target.value)} />
+			<>
+				<form action="#">
+					<div className="form-row">
+						<div className="col">
+							<input
+								type="number"
+								className="form-control"
+								placeholder="My age is" />
+						</div>
 
-				<button onClick={() => this.addAnswer()}>
-					Add Answer
-				</button>
+						<div className="col">
+							<input
+								className="form-control"
+								value={this.state.preAnswer}
+								onKeyDown={e => this.addAnswer(e)}
+								onChange={e => this.preAdd(e.target.value)} />
+						</div>
+					</div>
 
-				<ul>
+					<button className="btn btn-primary" disabled={this.state.preAnswer < 1} onClick={() => this.addAnswer()}>
+						Add Answer
+					</button>
+
+					<button className="btn btn-primary" disabled={!this.state.canSend} type="submit">
+						Send
+					</button>
+				</form>
+
+				<ul className="list-group">
 					{this.state.answers.map(a =>
-						<li key={a.id}>
+						<li key={a.id} className="list-group-item d-flex justify-content-between align-items-center">
 							{a.name}
 							<button onClick={_ => this.removeAnswer(a.id)}>x</button>
 						</li>
 					)}
 				</ul>
-
-				<button disabled={!this.state.canSend} type="submit">
-					Send
-				</button>
-			</div>
+			</>
 		);
 	}
 }
