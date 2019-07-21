@@ -1,4 +1,3 @@
 # experiment
 
-- https://en.parceljs.org/code_splitting.html
-- https://scotch.io/tutorials/setting-up-a-react-project-with-parcel
+- https://www.robinwieruch.de/minimal-react-webpack-babel-setup/#react-project-setup
